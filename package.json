@@ -1,0 +1,48 @@
+{
+  "name": "jsic",
+  "version": "0.0.1",
+  "description": "Javascript BASIC interpreter for browser (experimental)",
+  "main": "app.js",
+  "type": "module",
+  "directories": {
+    "dist": "dist",
+    "lib": "lib",
+    "src": "src",
+    "www": "www"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development rollup -c rollup.config.js && nodemon -w app.js -w lib -w src -i basic -i www -x \"nodejs .\"",
+    "build": "NODE_ENV=production rollup -c rollup.config.js",
+    "dist": "npm run build && cp src/jsic.js dist/${npm_package_name}-${npm_package_version}.js && cp www/app.js dist/${npm_package_name}-${npm_package_version}.min.js",
+    "clean": "rm -rf www/* dist/*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facmachado/jsic.git"
+  },
+  "keywords": [
+    "javascript",
+    "basic",
+    "interpreter"
+  ],
+  "author": "Flavio Augusto (@facmachado)",
+  "license": "MIT",
+  "devDependencies": {
+    "clean-css": "latest",
+    "express": "latest",
+    "html-minifier-terser": "latest",
+    "nodemon": "latest",
+    "rollup": "latest",
+    "rollup-plugin-copy": "latest",
+    "rollup-plugin-execute": "latest",
+    "@rollup/plugin-node-resolve": "latest",
+    "@rollup/plugin-commonjs": "latest",
+    "@rollup/plugin-legacy": "latest",
+    "terser": "latest"
+  },
+  "bugs": {
+    "url": "https://github.com/facmachado/jsic/issues"
+  },
+  "homepage": "https://github.com/facmachado/jsic#readme"
+}
