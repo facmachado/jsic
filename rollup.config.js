@@ -18,8 +18,8 @@ switch (process.env.NODE_ENV) {
     output_file = 'src/_temp.js';
     arr_execute = [
       'cleancss -O1 specialComments:none --output www/style.css src/style.css',
-      'html-minifier-terser --use-short-doctype --collapse-whitespace --remove-comments --minify-js "cm" --minify-css "O1 specialComments:none" --output www/index.html src/index.html',
-      'terser --module --comments false -cmo www/app.js src/_temp.js',
+      'html-minifier-terser --use-short-doctype --collapse-whitespace --remove-comments --minify-js "c" --minify-css "O1 specialComments:none" --output www/index.html src/index.html',
+      'terser --module --comments false -co www/app.js src/_temp.js',
       'rm -f src/_temp.js'
     ];
     break;

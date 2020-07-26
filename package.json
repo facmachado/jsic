@@ -2,19 +2,23 @@
   "name": "jsic",
   "version": "0.0.1",
   "description": "Javascript BASIC interpreter for browser (experimental)",
-  "main": "app.js",
+  "main": "index.js",
   "type": "module",
   "directories": {
     "dist": "dist",
+    "images": "images",
     "lib": "lib",
     "src": "src",
     "www": "www"
   },
   "scripts": {
-    "start": "NODE_ENV=development rollup -c rollup.config.js && nodemon -w app.js -w lib -w src -i basic -i www -x \"nodejs .\"",
-    "build": "NODE_ENV=production rollup -c rollup.config.js",
-    "dist": "npm run build && cp src/jsic.js dist/${npm_package_name}-${npm_package_version}.js && cp www/app.js dist/${npm_package_name}-${npm_package_version}.min.js",
-    "clean": "rm -rf www/* dist/*",
+    "build-dev": "NODE_ENV=development rollup -c rollup.config.js",
+    "build-prod": "NODE_ENV=production rollup -c rollup.config.js",
+    "clean": "rm -rf dist/* www/*",
+    "clean-all": "rm -rf dist/* www/* node_modules package-lock.json && npm install",
+    "dist": "npm run build-dev && cp www/app.js dist/${npm_package_name}-${npm_package_version}.js && npm run build-prod && cp www/app.js dist/${npm_package_name}-${npm_package_version}.min.js && rm -rf www/*",
+    "prod": "npm run build-prod && nodejs .",
+    "start": "npm run build-dev && nodejs .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,7 +36,6 @@
     "clean-css": "latest",
     "express": "latest",
     "html-minifier-terser": "latest",
-    "nodemon": "latest",
     "rollup": "latest",
     "rollup-plugin-copy": "latest",
     "rollup-plugin-execute": "latest",

@@ -14,4 +14,4 @@
 /**
  * Initialize
  */
-import server from './lib/server.js';
+import Server from './lib/Server.js';
